@@ -3,14 +3,20 @@ package com.global.hr.repository.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.global.hr.mapper.EmployeeMapper;
 import com.global.hr.model.Employee;
 import com.global.hr.repository.EmployeeReps;
 
-@Component
+//@Component
+@Repository
+@Primary
+@Qualifier("employeeJDBCRepo")
 public class EmployeeJDBCRepo implements EmployeeReps{
 	
 	@Autowired
@@ -40,20 +46,26 @@ public class EmployeeJDBCRepo implements EmployeeReps{
 
 		
 		return jdbcTemplate.update("insert into employees(id,name,salary) values (?,?,?)",
-				new Object[] {employee.getId(),employee.getName(),employee.getSalary()});
+				new Object[] {employee.getEmployeeId(),employee.getName(),employee.getSalary()});
 	}
 
 	@Override
 	public int update(Employee employee) {
 		
 		return jdbcTemplate.update("update employess set name=?,salary=? where id=?",
-				new Object[] {employee.getName(),employee.getSalary(),employee.getId()});
+				new Object[] {employee.getName(),employee.getSalary(),employee.getEmployeeId()});
 	}
 
 	@Override
 	public int delete(Long id) {
 
 		return jdbcTemplate.update("delete from employees where id=?",new Object[] {id});
+	}
+
+	@Override
+	public List<Employee> findByNameAndSalary(String name, Double salary) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

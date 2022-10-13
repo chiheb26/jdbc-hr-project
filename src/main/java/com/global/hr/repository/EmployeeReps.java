@@ -12,4 +12,5 @@ public interface EmployeeReps {
 	int insert(Employee employee);
 	int update(Employee employee);
 	int delete(Long id);
+	List<Employee> findByNameAndSalary(String name, Double salary);
 }

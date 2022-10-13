@@ -2,7 +2,7 @@ package com.global.hr.model;
 
 public class Employee {
 	
-	private Long id;
+	private Long employeeId;
 	private String name;
 	private double salary;
 	
@@ -13,19 +13,19 @@ public class Employee {
 	}
 	
 	
-	public Employee(Long id, String name, double salary) {
+	public Employee(Long employeeId, String name, double salary) {
 		super();
-		this.id = id;
+		this.employeeId = employeeId;
 		this.name = name;
 		this.salary = salary;
 	}
 
 
-	public Long getId() {
-		return id;
+	public Long getEmployeeId() {
+		return employeeId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
 	}
 	public String getName() {
 		return name;
